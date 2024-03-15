@@ -1,0 +1,19 @@
+#' Simulated Bivariate longitudinal data
+#'
+#' Simulated data were generated in which "Y1" and "Y2" follows a Gaussian distribution, "obstime" represents the observed time with some covariates.
+#'
+#'
+#' @name data
+#' @format A data frame which contains id, obstime, x1, x2, w1, w2, Y1 and Y2.
+#' \describe{
+#'   \item{id}{patients identifier}
+#'   \item{obstime}{observed times for longitudinal measerements}
+#'   \item{Y1}{the first longitudinal response}
+#'   \item{Y2}{the second longitudinal response}
+#'   \item{w1}{a continuous covariate}
+#'   \item{x1}{a binary covariate}
+#'   \item{w2}{a continuous covariate}
+#'   \item{x2}{a binary covariate}
+#' }
+#' @seealso \code{\link{UJM}}
+"data"
