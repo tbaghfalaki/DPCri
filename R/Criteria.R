@@ -13,7 +13,8 @@
 #' @param P the risk prediction
 #' @param cause the main cause for prediction
 #'
-#'
+#' @importFrom survival Surv
+#' @importFrom pec ipcw
 #'
 #' @return
 #' - AUC The values of AUC from timeROC package
@@ -26,8 +27,6 @@
 #'
 #' @md
 #' @export
-
-
 Criteria <- function(s, t, Survt, CR, P, cause) {
   index <- 1:length(Survt)
   index1 <- index[Survt > s][is.na(index[Survt > s]) == FALSE]
@@ -37,6 +36,11 @@ Criteria <- function(s, t, Survt, CR, P, cause) {
 
 
 
+
+
+  ##########$$$$$$$$$$$$$$$$$$$$$$$
+
+  ##########$$$$$$$$$$$$$$$$$$$$$$$
   bs <- BS(
     timepoints = t,
     times = Time1 - s,
@@ -53,13 +57,19 @@ Criteria <- function(s, t, Survt, CR, P, cause) {
     times = t,
     iid = TRUE
   )
+  if(max(death1)==1){
   bst <- c(bs$BS, bs$sd)
-  auct <- c(auc$AUC[2], auc$inference$vect_sd_1[2])
-
+  auct <- c(auc$AUC_1[2], auc$inference$vect_sd_1[2])
   Res <- rbind(auct, bst)
   rownames(Res) <- c("AUC", "BS")
   colnames(Res) <- c("est", "sd")
-
+  }else{
+    bst <- c(bs$BS, bs$sd)
+    auct <- c(auc$AUC_1[2], auc$inference$vect_sd_1[2])
+    Res <- rbind(auct, bst)
+    rownames(Res) <- c("AUC", "BS")
+    colnames(Res) <- c("est", "sd")
+}
 
   list(BS = bs, AUC = auc, Cri = Res)
 }
