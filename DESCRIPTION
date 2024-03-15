@@ -2,7 +2,7 @@ Package: DPCri
 Type: Package
 Title: Time-dependent AUC and BS
 Version: 0.1.0
-Authors@R: c(person("Taban", "Baghfalaki", email = "t.baghfalaki@gmail.com", role =c("cre","aut")))
+Authors@: person("Taban", "Baghfalaki", email = "t.baghfalaki@gmail.com", role =c("cph"))
 Maintainer: Taban Baghfalaki <t.baghfalaki@gmail.com>
 Description: The Brier score and AUC calculations utilize the available functions within the timeROC package, with added flexibility in the function arguments. Alongside the obtained results, a summary including estimates and standard deviations is provided for enhanced interpretation.
 License: GPL (>= 2.0)
