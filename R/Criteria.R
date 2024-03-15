@@ -29,34 +29,37 @@
 
 
 Criteria <- function(s, t, Survt, CR, P, cause) {
-
-index=1:length(Survt)
-index1=index[Survt>s][is.na(index[Survt>s])==FALSE]
-Time1=Survt[index1]
-death1=CR[index1]
-p_dem1=P[index1]
-
+  index <- 1:length(Survt)
+  index1 <- index[Survt > s][is.na(index[Survt > s]) == FALSE]
+  Time1 <- Survt[index1]
+  death1 <- CR[index1]
+  p_dem1 <- P[index1]
 
 
-bs=BS(timepoints=t,
-      times=Time1-s,
-      status=death1,
-      pred=matrix(p_dem1),
-      cause=1)
 
-auc=timeROC::timeROC(T=Time1-s,
-                     delta=death1,
-                     marker=p_dem1,
-                     cause=1,weighting="marginal",
-                     times=t,
-                     iid=TRUE)
-bst=c(bs$BS,bs$sd)
-auct=c(auc$AUC[2],auc$inference$vect_sd_1[2])
+  bs <- BS(
+    timepoints = t,
+    times = Time1 - s,
+    status = death1,
+    pred = matrix(p_dem1),
+    cause = 1
+  )
 
-Res=rbind(auct,bst)
-rownames(Res)=c("AUC","BS")
-colnames(Res)=c("est","sd")
+  auc <- timeROC::timeROC(
+    T = Time1 - s,
+    delta = death1,
+    marker = p_dem1,
+    cause = 1, weighting = "marginal",
+    times = t,
+    iid = TRUE
+  )
+  bst <- c(bs$BS, bs$sd)
+  auct <- c(auc$AUC[2], auc$inference$vect_sd_1[2])
+
+  Res <- rbind(auct, bst)
+  rownames(Res) <- c("AUC", "BS")
+  colnames(Res) <- c("est", "sd")
 
 
-list(BS=bs,AUC=auc,Cri=Res)
+  list(BS = bs, AUC = auc, Cri = Res)
 }
