@@ -59,7 +59,7 @@ Criteria <- function(s, t, Survt, CR, P, cause) {
   )
   if(max(death1)==1){
   bst <- c(bs$BS, bs$sd)
-  auct <- c(auc$AUC_1[2], auc$inference$vect_sd_1[2])
+  auct <- c(auc$AUC[2], auc$inference$vect_sd_1[2])
   Res <- rbind(auct, bst)
   rownames(Res) <- c("AUC", "BS")
   colnames(Res) <- c("est", "sd")
