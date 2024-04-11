@@ -13,7 +13,7 @@ This will seamlessly fetch and install the most up-to-date version of DPCri for 
 ### Example Usage
 
  > Examples from the DPCri can be found in the following
- > [here](/[Exam1.md](https://github.com/tbaghfalaki/TSJM/main/Exam2.md))
+ > [here]/[Exam2.md](https://github.com/tbaghfalaki/TSJM/blob/main/Exam2.md)
 
 
 ### Declaration and Contributions
