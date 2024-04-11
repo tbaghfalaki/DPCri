@@ -9,7 +9,7 @@
 #' @param s the landmark time for prediction
 #' @param t the window of prediction for prediction
 #' @param Survt the survival time
-#' @param CR the indicator for competing risks
+#' @param CR the indicator for competing risks or censoring
 #' @param P the risk prediction
 #' @param cause the main cause for prediction
 #'
